@@ -1,0 +1,31 @@
+import json
+
+store_data = open("convertcsv.json", "r").read()
+anipet_data = open("AnipetData.json", "r").read()
+
+store_products = json.loads(store_data)
+
+anipet_products = json.loads(anipet_data)
+
+#print anipet_products
+
+for item in anipet_products:
+	products_to_import = []
+	#json code to look up value of product_name
+	ani_prod = item["description"]
+	#print item["description"]
+	store_prod = []
+	for store_item in store_products:
+		full_product_name = store_item["Product Name"]
+		name_match = full_product_name.split("(")
+		if name_match[0][0] == "[":
+			break
+		else:
+			store_prod.append(name_match[0][0:15])
+	#print "Product", store_prod
+	#print ani_prod[0:15]
+	if ani_prod[0:15] in store_prod:
+		print ani_prod, store_prod
+		products_to_import.append(item)
+	
+print products_to_import
