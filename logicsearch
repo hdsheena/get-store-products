@@ -1,0 +1,18 @@
+#to test logic
+list_of_store_products = ["One product here", "Another separate product", "third and final product"]
+list_of_anipet_products = ["Three products is", "Not quite enough", "One product here"]
+for item in list_of_anipet_products:
+	products_to_import = []
+	ani_prod = item
+	#print item["description"]
+	store_prod = []
+	for store_item in list_of_store_products:
+		full_product_name = store_item
+		store_prod.append(full_product_name[0:15])
+	#print "Product", store_prod
+	#print ani_prod[0:15]
+	if ani_prod[0:15] in store_prod:
+		#print ani_prod, store_prod
+		products_to_import.append(item)
+	
+print products_to_import
